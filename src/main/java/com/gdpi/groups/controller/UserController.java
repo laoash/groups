@@ -19,32 +19,31 @@ import java.util.Map;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    private final UserService service;
-
+    private  UserService service;
     @Autowired
-    public UserController(UserService service) {
-        this.service = service;
-    }
-
+    public UserController(UserService service){this.service=service;}
     /*增加用户*/
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     @ResponseBody
-    public Result addUser(User user) {
-        return service.insertUser(user);
-    }
-
+    public Result addUser(User user){return service.insertUser(user);}
     /*删除用户*/
     @RequestMapping(value = "/delUser", method = RequestMethod.POST)
     @ResponseBody
-    public Result delUser(Integer userid) {
-        return service.deleteUser(userid);
-    }
-
-    /*分页查找用户*/
-    @RequestMapping(value = "/searchUser/list")
-    @ResponseBody
-    public PageResult searchUser(@RequestParam() Map<String, String> params) {
-        return service.selectAllUser(params);
-    }
+    public Result delUser(Integer userid){return service.deleteUser(userid);}
     /*删除多条用户*/
+    @RequestMapping(value = "/delUsers", method = RequestMethod.POST)
+    @ResponseBody
+    public  Result deleteUserMuch(@RequestParam("userid[]") Integer[] userid){return service.deleteUserMuch(userid);}
+    /*修改用户*/
+    @RequestMapping(value = "/updUser", method = RequestMethod.POST)
+    @ResponseBody
+    public Result updateUser(User user){return service.updateUser(user);}
+    /*查询  根据id*/
+    @RequestMapping("/selUser")
+    @ResponseBody
+    public Result findUserById(Integer userid){return service.selectUserByParam(userid);}
+    /*查询 分页*/
+    @RequestMapping("/selUsers")
+    @ResponseBody
+    public PageResult findAllUser(@RequestParam Map<String, String> params){return service.selectAllUser(params);}
 }

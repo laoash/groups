@@ -7,7 +7,7 @@ function load() {
         .bootstrapTable(
             {
                 method: 'get',
-                url: "/user/searchUser/list",
+                url: "/user/selUsers",
                 showColumns: false,
                 iconSize: 'outline',
                 toolbar: '#exampleToolbar',
