@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdpi.groups.dao.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.gdpi.groups.pojo.Product">
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="market_price" jdbcType="DOUBLE" property="marketPrice" />
+    <result column="product_price" jdbcType="DOUBLE" property="productPrice" />
+    <result column="product_img" jdbcType="VARCHAR" property="productImg" />
+    <result column="product_desc" jdbcType="VARCHAR" property="productDesc" />
+    <result column="is_seckill" jdbcType="INTEGER" property="isSeckill" />
+    <result column="is_group" jdbcType="INTEGER" property="isGroup" />
+    <result column="product_date" jdbcType="TIMESTAMP" property="productDate" />
+    <result column="cs_id" jdbcType="INTEGER" property="csId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    product_id, product_name, market_price, product_price, product_img, product_desc, 
+    is_seckill, is_group, product_date, cs_id
+  </sql>
+  <select id="selectByExample" parameterType="com.gdpi.groups.pojo.ProductExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdpi.groups.pojo.ProductExample">
+    delete from product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdpi.groups.pojo.Product">
+    insert into product (product_id, product_name, market_price, 
+      product_price, product_img, product_desc, 
+      is_seckill, is_group, product_date, 
+      cs_id)
+    values (#{productId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{marketPrice,jdbcType=DOUBLE}, 
+      #{productPrice,jdbcType=DOUBLE}, #{productImg,jdbcType=VARCHAR}, #{productDesc,jdbcType=VARCHAR}, 
+      #{isSeckill,jdbcType=INTEGER}, #{isGroup,jdbcType=INTEGER}, #{productDate,jdbcType=TIMESTAMP}, 
+      #{csId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdpi.groups.pojo.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="marketPrice != null">
+        market_price,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+      <if test="productImg != null">
+        product_img,
+      </if>
+      <if test="productDesc != null">
+        product_desc,
+      </if>
+      <if test="isSeckill != null">
+        is_seckill,
+      </if>
+      <if test="isGroup != null">
+        is_group,
+      </if>
+      <if test="productDate != null">
+        product_date,
+      </if>
+      <if test="csId != null">
+        cs_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null">
+        #{marketPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productImg != null">
+        #{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productDesc != null">
+        #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isSeckill != null">
+        #{isSeckill,jdbcType=INTEGER},
+      </if>
+      <if test="isGroup != null">
+        #{isGroup,jdbcType=INTEGER},
+      </if>
+      <if test="productDate != null">
+        #{productDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csId != null">
+        #{csId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdpi.groups.pojo.ProductExample" resultType="java.lang.Long">
+    select count(*) from product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update product
+    <set>
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productName != null">
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marketPrice != null">
+        market_price = #{record.marketPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.productPrice != null">
+        product_price = #{record.productPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.productImg != null">
+        product_img = #{record.productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productDesc != null">
+        product_desc = #{record.productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isSeckill != null">
+        is_seckill = #{record.isSeckill,jdbcType=INTEGER},
+      </if>
+      <if test="record.isGroup != null">
+        is_group = #{record.isGroup,jdbcType=INTEGER},
+      </if>
+      <if test="record.productDate != null">
+        product_date = #{record.productDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.csId != null">
+        cs_id = #{record.csId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update product
+    set product_id = #{record.productId,jdbcType=INTEGER},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      market_price = #{record.marketPrice,jdbcType=DOUBLE},
+      product_price = #{record.productPrice,jdbcType=DOUBLE},
+      product_img = #{record.productImg,jdbcType=VARCHAR},
+      product_desc = #{record.productDesc,jdbcType=VARCHAR},
+      is_seckill = #{record.isSeckill,jdbcType=INTEGER},
+      is_group = #{record.isGroup,jdbcType=INTEGER},
+      product_date = #{record.productDate,jdbcType=TIMESTAMP},
+      cs_id = #{record.csId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdpi.groups.pojo.Product">
+    update product
+    <set>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null">
+        market_price = #{marketPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productImg != null">
+        product_img = #{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productDesc != null">
+        product_desc = #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isSeckill != null">
+        is_seckill = #{isSeckill,jdbcType=INTEGER},
+      </if>
+      <if test="isGroup != null">
+        is_group = #{isGroup,jdbcType=INTEGER},
+      </if>
+      <if test="productDate != null">
+        product_date = #{productDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csId != null">
+        cs_id = #{csId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdpi.groups.pojo.Product">
+    update product
+    set product_name = #{productName,jdbcType=VARCHAR},
+      market_price = #{marketPrice,jdbcType=DOUBLE},
+      product_price = #{productPrice,jdbcType=DOUBLE},
+      product_img = #{productImg,jdbcType=VARCHAR},
+      product_desc = #{productDesc,jdbcType=VARCHAR},
+      is_seckill = #{isSeckill,jdbcType=INTEGER},
+      is_group = #{isGroup,jdbcType=INTEGER},
+      product_date = #{productDate,jdbcType=TIMESTAMP},
+      cs_id = #{csId,jdbcType=INTEGER}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+</mapper>
