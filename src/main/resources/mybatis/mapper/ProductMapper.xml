@@ -8,8 +8,7 @@
     <result column="product_price" jdbcType="DOUBLE" property="productPrice" />
     <result column="product_img" jdbcType="VARCHAR" property="productImg" />
     <result column="product_desc" jdbcType="VARCHAR" property="productDesc" />
-    <result column="is_seckill" jdbcType="INTEGER" property="isSeckill" />
-    <result column="is_group" jdbcType="INTEGER" property="isGroup" />
+    <result column="product_status" jdbcType="INTEGER" property="productStatus" />
     <result column="product_date" jdbcType="TIMESTAMP" property="productDate" />
     <result column="cs_id" jdbcType="INTEGER" property="csId" />
   </resultMap>
@@ -73,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List">
     product_id, product_name, market_price, product_price, product_img, product_desc, 
-    is_seckill, is_group, product_date, cs_id
+    product_status, product_date, cs_id
   </sql>
   <select id="selectByExample" parameterType="com.gdpi.groups.pojo.ProductExample" resultMap="BaseResultMap">
     select
@@ -108,12 +107,12 @@
   <insert id="insert" parameterType="com.gdpi.groups.pojo.Product">
     insert into product (product_id, product_name, market_price, 
       product_price, product_img, product_desc, 
-      is_seckill, is_group, product_date, 
-      cs_id)
+      product_status, product_date, cs_id
+      )
     values (#{productId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{marketPrice,jdbcType=DOUBLE}, 
       #{productPrice,jdbcType=DOUBLE}, #{productImg,jdbcType=VARCHAR}, #{productDesc,jdbcType=VARCHAR}, 
-      #{isSeckill,jdbcType=INTEGER}, #{isGroup,jdbcType=INTEGER}, #{productDate,jdbcType=TIMESTAMP}, 
-      #{csId,jdbcType=INTEGER})
+      #{productStatus,jdbcType=INTEGER}, #{productDate,jdbcType=TIMESTAMP}, #{csId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.gdpi.groups.pojo.Product">
     insert into product
@@ -136,11 +135,8 @@
       <if test="productDesc != null">
         product_desc,
       </if>
-      <if test="isSeckill != null">
-        is_seckill,
-      </if>
-      <if test="isGroup != null">
-        is_group,
+      <if test="productStatus != null">
+        product_status,
       </if>
       <if test="productDate != null">
         product_date,
@@ -168,11 +164,8 @@
       <if test="productDesc != null">
         #{productDesc,jdbcType=VARCHAR},
       </if>
-      <if test="isSeckill != null">
-        #{isSeckill,jdbcType=INTEGER},
-      </if>
-      <if test="isGroup != null">
-        #{isGroup,jdbcType=INTEGER},
+      <if test="productStatus != null">
+        #{productStatus,jdbcType=INTEGER},
       </if>
       <if test="productDate != null">
         #{productDate,jdbcType=TIMESTAMP},
@@ -209,11 +202,8 @@
       <if test="record.productDesc != null">
         product_desc = #{record.productDesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.isSeckill != null">
-        is_seckill = #{record.isSeckill,jdbcType=INTEGER},
-      </if>
-      <if test="record.isGroup != null">
-        is_group = #{record.isGroup,jdbcType=INTEGER},
+      <if test="record.productStatus != null">
+        product_status = #{record.productStatus,jdbcType=INTEGER},
       </if>
       <if test="record.productDate != null">
         product_date = #{record.productDate,jdbcType=TIMESTAMP},
@@ -234,8 +224,7 @@
       product_price = #{record.productPrice,jdbcType=DOUBLE},
       product_img = #{record.productImg,jdbcType=VARCHAR},
       product_desc = #{record.productDesc,jdbcType=VARCHAR},
-      is_seckill = #{record.isSeckill,jdbcType=INTEGER},
-      is_group = #{record.isGroup,jdbcType=INTEGER},
+      product_status = #{record.productStatus,jdbcType=INTEGER},
       product_date = #{record.productDate,jdbcType=TIMESTAMP},
       cs_id = #{record.csId,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -260,11 +249,8 @@
       <if test="productDesc != null">
         product_desc = #{productDesc,jdbcType=VARCHAR},
       </if>
-      <if test="isSeckill != null">
-        is_seckill = #{isSeckill,jdbcType=INTEGER},
-      </if>
-      <if test="isGroup != null">
-        is_group = #{isGroup,jdbcType=INTEGER},
+      <if test="productStatus != null">
+        product_status = #{productStatus,jdbcType=INTEGER},
       </if>
       <if test="productDate != null">
         product_date = #{productDate,jdbcType=TIMESTAMP},
@@ -282,8 +268,7 @@
       product_price = #{productPrice,jdbcType=DOUBLE},
       product_img = #{productImg,jdbcType=VARCHAR},
       product_desc = #{productDesc,jdbcType=VARCHAR},
-      is_seckill = #{isSeckill,jdbcType=INTEGER},
-      is_group = #{isGroup,jdbcType=INTEGER},
+      product_status = #{productStatus,jdbcType=INTEGER},
       product_date = #{productDate,jdbcType=TIMESTAMP},
       cs_id = #{csId,jdbcType=INTEGER}
     where product_id = #{productId,jdbcType=INTEGER}

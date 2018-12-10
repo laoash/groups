@@ -495,123 +495,63 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillIsNull() {
-            addCriterion("is_seckill is null");
+        public Criteria andProductStatusIsNull() {
+            addCriterion("product_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillIsNotNull() {
-            addCriterion("is_seckill is not null");
+        public Criteria andProductStatusIsNotNull() {
+            addCriterion("product_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillEqualTo(Integer value) {
-            addCriterion("is_seckill =", value, "isSeckill");
+        public Criteria andProductStatusEqualTo(Integer value) {
+            addCriterion("product_status =", value, "productStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillNotEqualTo(Integer value) {
-            addCriterion("is_seckill <>", value, "isSeckill");
+        public Criteria andProductStatusNotEqualTo(Integer value) {
+            addCriterion("product_status <>", value, "productStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillGreaterThan(Integer value) {
-            addCriterion("is_seckill >", value, "isSeckill");
+        public Criteria andProductStatusGreaterThan(Integer value) {
+            addCriterion("product_status >", value, "productStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillGreaterThanOrEqualTo(Integer value) {
-            addCriterion("is_seckill >=", value, "isSeckill");
+        public Criteria andProductStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("product_status >=", value, "productStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillLessThan(Integer value) {
-            addCriterion("is_seckill <", value, "isSeckill");
+        public Criteria andProductStatusLessThan(Integer value) {
+            addCriterion("product_status <", value, "productStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillLessThanOrEqualTo(Integer value) {
-            addCriterion("is_seckill <=", value, "isSeckill");
+        public Criteria andProductStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("product_status <=", value, "productStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillIn(List<Integer> values) {
-            addCriterion("is_seckill in", values, "isSeckill");
+        public Criteria andProductStatusIn(List<Integer> values) {
+            addCriterion("product_status in", values, "productStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillNotIn(List<Integer> values) {
-            addCriterion("is_seckill not in", values, "isSeckill");
+        public Criteria andProductStatusNotIn(List<Integer> values) {
+            addCriterion("product_status not in", values, "productStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillBetween(Integer value1, Integer value2) {
-            addCriterion("is_seckill between", value1, value2, "isSeckill");
+        public Criteria andProductStatusBetween(Integer value1, Integer value2) {
+            addCriterion("product_status between", value1, value2, "productStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsSeckillNotBetween(Integer value1, Integer value2) {
-            addCriterion("is_seckill not between", value1, value2, "isSeckill");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupIsNull() {
-            addCriterion("is_group is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupIsNotNull() {
-            addCriterion("is_group is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupEqualTo(Integer value) {
-            addCriterion("is_group =", value, "isGroup");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupNotEqualTo(Integer value) {
-            addCriterion("is_group <>", value, "isGroup");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupGreaterThan(Integer value) {
-            addCriterion("is_group >", value, "isGroup");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupGreaterThanOrEqualTo(Integer value) {
-            addCriterion("is_group >=", value, "isGroup");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupLessThan(Integer value) {
-            addCriterion("is_group <", value, "isGroup");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupLessThanOrEqualTo(Integer value) {
-            addCriterion("is_group <=", value, "isGroup");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupIn(List<Integer> values) {
-            addCriterion("is_group in", values, "isGroup");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupNotIn(List<Integer> values) {
-            addCriterion("is_group not in", values, "isGroup");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupBetween(Integer value1, Integer value2) {
-            addCriterion("is_group between", value1, value2, "isGroup");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsGroupNotBetween(Integer value1, Integer value2) {
-            addCriterion("is_group not between", value1, value2, "isGroup");
+        public Criteria andProductStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("product_status not between", value1, value2, "productStatus");
             return (Criteria) this;
         }
 

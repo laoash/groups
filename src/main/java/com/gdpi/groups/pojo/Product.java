@@ -4,23 +4,21 @@ import java.util.Date;
 
 public class Product {
     private Integer productId;
-    //商品名称
+    //名称
     private String productName;
-    //市场价格
+    //市场价
     private Double marketPrice;
-    //商品价格
+    //商品价
     private Double productPrice;
-    //商品图片
+    //图片
     private String productImg;
-    //商品详情
+    //详情
     private String productDesc;
-    //是否秒杀，0：否，1：是
-    private Integer isSeckill;
-    //是否团购，0：否，1：是
-    private Integer isGroup;
-    //日期
+    //状态 0：正常，1：秒杀 2：团购
+    private Integer productStatus;
+    //上架日期
     private Date productDate;
-    //分类id
+
     private Integer csId;
 
     public Integer getProductId() {
@@ -71,20 +69,12 @@ public class Product {
         this.productDesc = productDesc == null ? null : productDesc.trim();
     }
 
-    public Integer getIsSeckill() {
-        return isSeckill;
+    public Integer getProductStatus() {
+        return productStatus;
     }
 
-    public void setIsSeckill(Integer isSeckill) {
-        this.isSeckill = isSeckill;
-    }
-
-    public Integer getIsGroup() {
-        return isGroup;
-    }
-
-    public void setIsGroup(Integer isGroup) {
-        this.isGroup = isGroup;
+    public void setProductStatus(Integer productStatus) {
+        this.productStatus = productStatus;
     }
 
     public Date getProductDate() {

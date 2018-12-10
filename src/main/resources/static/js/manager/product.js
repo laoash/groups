@@ -14,6 +14,7 @@ function load() {
                 striped: true,
                 undefinedText: "-",
                 dataType: "json",
+                search: true,
                 pagination: true,
                 singleSelect: false,
                 pageSize: 10,
@@ -83,9 +84,8 @@ function reLoad() {
 
 /*删除*/
 function remove(id) {
-    layer.confirm('确定要删除选中的记录？', {
-        btn: ['确定', '取消']
-    }, function () {
+    var b = confirm('确定要删除选中的记录？');
+    if (b) {
         $.ajax({
             url: "/posts/deletePosts",
             type: "post",
@@ -93,13 +93,17 @@ function remove(id) {
                 'postsId': id
             },
             success: function (r) {
-                if (r.code === 0) {
-                    layer.msg(r.msg);
+                if (r.code == 0) {
+                    alert(r.msg);
                     reLoad();
                 } else {
-                    layer.msg(r.msg);
+                    alert(r.msg);
                 }
             }
         });
-    })
+    }
+}
+
+function add() {
+    window.location.href = "/manager/addProduct.html"
 }
