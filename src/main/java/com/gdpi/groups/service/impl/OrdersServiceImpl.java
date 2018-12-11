@@ -59,9 +59,9 @@ public class OrdersServiceImpl implements OrdersService {
         Integer rows = new Integer(params.get("offset"));
         PageHelper.startPage((rows / page) + 1, page);
         String ordersId = params.get("search");
-        String search = null;
+        Integer search = null;
         if (ordersId != null && !ordersId.isEmpty()) {
-            search = ordersId;
+            search = new Integer(ordersId);
         }
         // 执行查询
         List<Orders> orders = ordersMapper.selectByExampleWithUser(search);
@@ -71,5 +71,15 @@ public class OrdersServiceImpl implements OrdersService {
         long total = pageInfo.getTotal();
         // 返回处理结果
         return new PageResult(total, orders);
+    }
+
+    @Override
+    public Orders selOrder(Integer orderId) {
+        List<Orders> orders = ordersMapper.selectByExampleWithUser(orderId);
+        if (orders.isEmpty()){
+            return null;
+        }else {
+            return orders.get(0);
+        }
     }
 }

@@ -18,4 +18,6 @@ public interface OrdersService {
     Result selectOrdersByParam(Integer orderId);
 
     PageResult selectAllOrders(Map<String, String> params);
+
+    Orders selOrder(Integer orderId);
 }

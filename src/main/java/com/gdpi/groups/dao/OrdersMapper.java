@@ -29,5 +29,5 @@ public interface OrdersMapper {
 
     int updateByPrimaryKey(Orders record);
 
-    List<Orders> selectByExampleWithUser(String search);
+    List<Orders> selectByExampleWithUser(Integer search);
 }

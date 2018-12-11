@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
+import java.util.Timer;
 
 /**
  * @author luojianhui
@@ -28,6 +29,7 @@ public class OrdersController {
     public OrdersController(OrdersService ordersService) {
         this.ordersService = ordersService;
     }
+
     /*增加用户*/
     @RequestMapping(value = "/addOrders", method = RequestMethod.POST)
     @ResponseBody
@@ -41,13 +43,6 @@ public class OrdersController {
     public Result delOrders(Integer orderId) {
         return ordersService.deleteOrders(orderId);
     }
-
-//    /*查询  根据id*/
-//    @RequestMapping("/selOrders")
-//    @ResponseBody
-//    public Result findOrdersById(Integer orderId) {
-//        return ordersService.selectOrdersByParam(orderId);
-//    }
 
     /*查询 分页*/
     @RequestMapping("/selOrders")

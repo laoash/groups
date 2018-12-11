@@ -15,6 +15,7 @@ function load() {
                 undefinedText: "-",
                 dataType: "json",
                 pagination: true,
+                search: true,
                 singleSelect: false,
                 pageSize: 10,
                 pageList: [25, 50, 100],

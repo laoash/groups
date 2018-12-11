@@ -14,7 +14,6 @@ function load() {
                 striped: true,
                 undefinedText: "-",
                 dataType: "json",
-                search: true,
                 pagination: true,
                 singleSelect: false,
                 pageSize: 10,
@@ -29,45 +28,12 @@ function load() {
                 },
                 columns: [
                     {
-                        field: 'productId',
-                        title: '商品ID'
+                        field: 'categoryId',
+                        title: '编号'
                     },
                     {
-                        field: 'productName',
-                        title: '商品名称'
-                    },
-                    {
-                        field: 'marketPrice',
-                        title: '市场价格'
-                    },
-                    {
-                        field: 'productPrice',
-                        title: '商品价格'
-                    },
-                    {
-                        field: 'productImg',
-                        title: '商品图片'
-                    },
-                    {
-                        field: 'productDesc',
-                        title: '商品信息'
-                    },
-                    {
-                        field: 'productStatus',
-                        title: '活动',
-                        formatter: function (value, row, index) {
-                            if (value == 0) {
-                                return "正常"
-                            } else if (value == 1) {
-                                return "秒杀"
-                            } else {
-                                return "团购"
-                            }
-                        }
-                    },
-                    {
-                        field: 'productDate',
-                        title: '上架日期'
+                        field: 'categoryName',
+                        title: '名称'
                     },
                     {
                         title: '操作',
