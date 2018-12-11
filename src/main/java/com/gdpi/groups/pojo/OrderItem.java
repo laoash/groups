@@ -12,16 +12,6 @@ public class OrderItem {
     //购买数量
     private Integer buyCount;
 
-    private Product product;
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public Integer getItemId() {
         return itemId;
     }

@@ -28,6 +28,4 @@ public interface OrderItemMapper {
     int updateByPrimaryKeySelective(OrderItem record);
 
     int updateByPrimaryKey(OrderItem record);
-
-    List<OrderItem> selectByOrderId(Integer orderId);
 }
