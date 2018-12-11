@@ -1,11 +1,13 @@
 package com.gdpi.groups.pojo;
 
+/**
+ * 一级分类
+ */
 public class Category {
+
     private Integer categoryId;
 
-    private String csName;
-
-    private Integer fatherId;
+    private String categoryName;
 
     public Integer getCategoryId() {
         return categoryId;
@@ -15,19 +17,11 @@ public class Category {
         this.categoryId = categoryId;
     }
 
-    public String getCsName() {
-        return csName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCsName(String csName) {
-        this.csName = csName == null ? null : csName.trim();
-    }
-
-    public Integer getFatherId() {
-        return fatherId;
-    }
-
-    public void setFatherId(Integer fatherId) {
-        this.fatherId = fatherId;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName == null ? null : categoryName.trim();
     }
 }

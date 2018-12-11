@@ -16,11 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
-/**
- * @author craly
- * @date 2018/12/10
- */
 @Service
 public class UserServiceImpl implements UserService {
     private final UserMapper mapper;

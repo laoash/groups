@@ -18,6 +18,16 @@ public class Orders {
     //订单状态，0：取消订单，1：订单成功
     private Integer orderStatus;
 
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Integer getOrderId() {
         return orderId;
     }
