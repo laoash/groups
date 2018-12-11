@@ -4,22 +4,22 @@ import java.util.Date;
 
 public class Product {
     private Integer productId;
-    //名称
+
     private String productName;
-    //市场价
+
     private Double marketPrice;
-    //商品价
+
     private Double productPrice;
-    //图片
+
     private String productImg;
-    //详情
+
     private String productDesc;
-    //状态 0：正常，1：秒杀 2：团购
+
     private Integer productStatus;
-    //上架日期
+
     private Date productDate;
 
-    private Integer csId;
+    private Integer categoryId;
 
     public Integer getProductId() {
         return productId;
@@ -85,11 +85,11 @@ public class Product {
         this.productDate = productDate;
     }
 
-    public Integer getCsId() {
-        return csId;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCsId(Integer csId) {
-        this.csId = csId;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 }

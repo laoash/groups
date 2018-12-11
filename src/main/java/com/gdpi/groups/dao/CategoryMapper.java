@@ -2,9 +2,8 @@ package com.gdpi.groups.dao;
 
 import com.gdpi.groups.pojo.Category;
 import com.gdpi.groups.pojo.CategoryExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface CategoryMapper {
     long countByExample(CategoryExample example);
