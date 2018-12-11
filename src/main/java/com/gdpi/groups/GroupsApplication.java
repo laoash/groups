@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableAutoConfiguration
 @EnableTransactionManagement
 @MapperScan("com.gdpi.groups.dao")
 public class GroupsApplication {

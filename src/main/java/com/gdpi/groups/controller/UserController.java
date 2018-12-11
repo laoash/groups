@@ -40,16 +40,17 @@ public class UserController {
         return service.deleteUser(userid);
     }
 
-    /*分页查找用户*/
-    @RequestMapping(value = "/searchUser/list")
-    @ResponseBody
-    public Result updateUser(User user){return service.updateUser(user);}
     /*查询  根据id*/
     @RequestMapping("/selUser")
     @ResponseBody
-    public Result findUserById(Integer userid){return service.selectUserByParam(userid);}
+    public Result findUserById(Integer userid) {
+        return service.selectUserByParam(userid);
+    }
+
     /*查询 分页*/
     @RequestMapping("/selUsers")
     @ResponseBody
-    public PageResult findAllUser(@RequestParam Map<String, String> params){return service.selectAllUser(params);}
+    public PageResult findAllUser(@RequestParam Map<String, String> params) {
+        return service.selectAllUser(params);
+    }
 }

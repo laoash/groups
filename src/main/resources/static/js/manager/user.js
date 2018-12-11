@@ -23,7 +23,8 @@ function load() {
                 queryParams: function (params) {
                     return {
                         limit: params.limit,//页面大小
-                        offset: params.offset //页码
+                        offset: params.offset, //页码
+                        search: params.search
                     };
                 },
                 columns: [
@@ -68,7 +69,7 @@ function load() {
                         align: 'center',
                         formatter: function (value, row, index) {
                             var d = '<a title="删除" onclick="remove(\''
-                                + row.postsId
+                                + row.userId
                                 + '\')"><i class="fa fa-remove" style="margin: 0"></i></a>';
                             return d;
                         }
@@ -83,13 +84,13 @@ function reLoad() {
 
 /*删除*/
 function remove(id) {
-    var b = confirm('确定要删除选中的记录？');
-    if (b) {
+    var res = confirm('确定要删除选中的记录？');
+    if (res == true) {
         $.ajax({
-            url: "/posts/deletePosts",
+            url: "/user/delUser",
             type: "post",
             data: {
-                'postsId': id
+                'userid': id
             },
             success: function (r) {
                 if (r.code == 0) {
