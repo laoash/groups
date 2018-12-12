@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gdpi.groups.mapper.CategoryMapper">
-  <resultMap id="BaseResultMap" type="com.gdpi.groups.pojo.Category">
-    <id column="category_id" jdbcType="INTEGER" property="categoryId" />
-    <result column="cs_name" jdbcType="VARCHAR" property="csName" />
-    <result column="father_id" jdbcType="INTEGER" property="fatherId" />
+<mapper namespace="com.gdpi.groups.mapper.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.gdpi.groups.pojo.Admin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    category_id, cs_name, father_id
+    id, name, password
   </sql>
-  <select id="selectByExample" parameterType="com.gdpi.groups.pojo.CategoryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.gdpi.groups.pojo.AdminExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from category
+    from admin
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +84,67 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from category
-    where category_id = #{categoryId,jdbcType=INTEGER}
+    from admin
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from category
-    where category_id = #{categoryId,jdbcType=INTEGER}
+    delete from admin
+    where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.gdpi.groups.pojo.CategoryExample">
-    delete from category
+  <delete id="deleteByExample" parameterType="com.gdpi.groups.pojo.AdminExample">
+    delete from admin
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.gdpi.groups.pojo.Category">
-    insert into category (category_id, cs_name, father_id
+  <insert id="insert" parameterType="com.gdpi.groups.pojo.Admin">
+    insert into admin (id, name, password
       )
-    values (#{categoryId,jdbcType=INTEGER}, #{csName,jdbcType=VARCHAR}, #{fatherId,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.gdpi.groups.pojo.Category">
-    insert into category
+  <insert id="insertSelective" parameterType="com.gdpi.groups.pojo.Admin">
+    insert into admin
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="categoryId != null">
-        category_id,
+      <if test="id != null">
+        id,
       </if>
-      <if test="csName != null">
-        cs_name,
+      <if test="name != null">
+        name,
       </if>
-      <if test="fatherId != null">
-        father_id,
+      <if test="password != null">
+        password,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="categoryId != null">
-        #{categoryId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
-      <if test="csName != null">
-        #{csName,jdbcType=VARCHAR},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="fatherId != null">
-        #{fatherId,jdbcType=INTEGER},
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.gdpi.groups.pojo.CategoryExample" resultType="java.lang.Long">
-    select count(*) from category
+  <select id="countByExample" parameterType="com.gdpi.groups.pojo.AdminExample" resultType="java.lang.Long">
+    select count(*) from admin
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update category
+    update admin
     <set>
-      <if test="record.categoryId != null">
-        category_id = #{record.categoryId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.csName != null">
-        cs_name = #{record.csName,jdbcType=VARCHAR},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.fatherId != null">
-        father_id = #{record.fatherId,jdbcType=INTEGER},
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -152,30 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update category
-    set category_id = #{record.categoryId,jdbcType=INTEGER},
-      cs_name = #{record.csName,jdbcType=VARCHAR},
-      father_id = #{record.fatherId,jdbcType=INTEGER}
+    update admin
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gdpi.groups.pojo.Category">
-    update category
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdpi.groups.pojo.Admin">
+    update admin
     <set>
-      <if test="csName != null">
-        cs_name = #{csName,jdbcType=VARCHAR},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="fatherId != null">
-        father_id = #{fatherId,jdbcType=INTEGER},
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
       </if>
     </set>
-    where category_id = #{categoryId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gdpi.groups.pojo.Category">
-    update category
-    set cs_name = #{csName,jdbcType=VARCHAR},
-      father_id = #{fatherId,jdbcType=INTEGER}
-    where category_id = #{categoryId,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.gdpi.groups.pojo.Admin">
+    update admin
+    set name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -2,9 +2,11 @@ package com.gdpi.groups.dao;
 
 import com.gdpi.groups.pojo.Product;
 import com.gdpi.groups.pojo.ProductExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 public interface ProductMapper {
     long countByExample(ProductExample example);

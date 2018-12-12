@@ -14,12 +14,26 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">一级菜单</h2>
+                    <h2 class="page-header">菜单分类</h2>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-3">
+                    <div id="jstree">
+                        <!-- in this example the tree is populated from inline HTML -->
+                        <ul>
+                            <li>Root node 1
+                                <ul>
+                                    <li id="child_node_1">Child node 1</li>
+                                    <li>Child node 2</li>
+                                </ul>
+                            </li>
+                            <li>Root node 2</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
                     <div class="columns pull-left" style="margin-bottom: 10px;">
                         <button type="button" class="table-btn btn btn-info" onclick="add()">
                             <i class="fa fa-plus" aria-hidden="true"></i> 添加分类
@@ -56,6 +70,33 @@
 <script src="/vendor/bootstrap-table/js/bootstrap-table-mobile.min.js"></script>
 
 <script src="/vendor/bootstrap-table/js/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<!-- 4 include the jQuery library -->
+<script src="/dist/libs/jquery.js"></script>
+<!-- 5 include the minified jstree source -->
+<script src="/dist/jstree.min.js"></script>
+<script>
+    $(function () {
+        // 6 create an instance when the DOM is ready
+        $('#jstree').jstree();
+        // 7 bind to events triggered on the tree
+        $('#jstree').on("changed.jstree", function (e, data) {
+            if (data.selected[0] == -1) {
+                temp = '';
+                reLoad();
+            } else {
+                temp = data.selected[0];
+                reLoad();
+            }
+        });
+        // 8 interact with the tree - either way is OK
+        $('button').on('click', function () {
+            $('#jstree').jstree(true).select_node('child_node_1');
+            $('#jstree').jstree('select_node', 'child_node_1');
+            $.jstree.reference('#jstree').select_node('child_node_1');
+        });
+    });
+</script>
 
 </body>
 

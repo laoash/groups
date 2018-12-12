@@ -7,7 +7,7 @@ function load() {
         .bootstrapTable(
             {
                 method: 'get',
-                url: "/user/searchUser/list",
+                url: "/prod/selProds",
                 showColumns: false,
                 iconSize: 'outline',
                 toolbar: '#exampleToolbar',
@@ -24,7 +24,8 @@ function load() {
                 queryParams: function (params) {
                     return {
                         limit: params.limit,//页面大小
-                        offset: params.offset //页码
+                        offset: params.offset,
+                        search: params.search//页码
                     };
                 },
                 columns: [

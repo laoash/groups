@@ -1,4 +1,7 @@
+var temp = '';
 $(function () {
+    var id = '';
+    getTreeData();
     load();
 });
 
@@ -23,7 +26,8 @@ function load() {
                 queryParams: function (params) {
                     return {
                         limit: params.limit,//页面大小
-                        offset: params.offset //页码
+                        offset: params.offset,
+                        id: temp//页码
                     };
                 },
                 columns: [
@@ -50,8 +54,43 @@ function load() {
 
 /*刷新表*/
 function reLoad() {
-    $('#exampleTable').bootstrapTable('refresh');
+    var opt = {
+        query: {
+            id: temp
+        }
+    };
+    $('#exampleTable').bootstrapTable('refresh', opt);
 }
+
+function getTreeData() {
+    $.ajax({
+        type: "GET",
+        url: "/result/tree",
+        success: function (tree) {
+            loadTree(tree);
+        }
+    });
+}
+
+function loadTree(tree) {
+    $('#jstree').jstree({
+        'core': {
+            'data': tree
+        },
+        "plugins": ["search"]
+    });
+    $('#jstree').jstree().open_all();
+}
+
+$('#jstree').on("changed.jstree", function (e, data) {
+    if (data.selected[0] == -1) {
+        temp = '';
+        reLoad();
+    } else {
+        temp = data.selected[0];
+        reLoad();
+    }
+});
 
 /*删除*/
 function remove(id) {
